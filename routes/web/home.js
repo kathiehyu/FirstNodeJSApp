@@ -3,6 +3,7 @@ var express = require("express");
 var router = express.Router();
 var passport = require("passport");
 var User = require("../../models/user");
+var ensureAuthenticated = require("../../auth/auth").ensureAuthenticated;
 
 router.get('/', (req, res) => {
     console.log("I'm on the start page");
@@ -24,7 +25,7 @@ router.get("/login", (req, res) => {
 
 // to secure route: use middleware, which authenticates
 // before accessing route.
-router.get("/posts", (req, res) => {
+router.get("/posts", ensureAuthenticated, (req, res) => {
     res.render("home/posts");
 });
 

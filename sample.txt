@@ -1,4 +1,2 @@
-This is the text that should appear.
-I'm not ready :(
-    I'm scared
-)
+To Do
+: padding of titles: (i.e "Welcome to the home page")
