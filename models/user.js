@@ -1,50 +1,6 @@
-// // representation of model user: Schema
+// representation of model: user: schema
 
-// // bcrypt: hash passwords, compare hashed passwords
-// var bcrypt = require("bcryptjs");
-
-// var mongoose = require("mongoose");
-
-// const SALT_FACTOR = 10;
-
-// var userSchema = mongoose.Schema({
-//     username:{type:String, required:true},
-//     email:{type:String, required:true, unique:true},
-//     password:{type:String, required:false},
-//     createdAt:{type:Date, default:Date.now}
-// });
-// // right before it saves
-// userSchema.pre("save", function(done) {
-//     var user = this;
-
-//     // changing the password?
-//     if (!user.isModified("password")) {
-//         return done();
-//     }
-
-//     // generate salt: random string to make hash unpredictable
-//     bcrypt.genSalt(SALT_FACTOR, (err, salt) => {
-//         if (err) return done(err);
-//         bcrypt.hash(user.password, salt, (err, hashedPassword) => {
-//             if (err) return done(err);
-//             user.password = hashedPassword;
-//             done();
-//         });
-//     });
-// });
-
-// // check password after attempting to login: 
-// userSchema.methods.checkPassword = (guess, done) => {
-//     if (this.password != null) {
-//         // compare password supplied (guess) with actual hashedPassword in db
-//         bcrypt.compare(guess, this.password, (err, isMatch) => {
-//             done(err, isMatch);
-//         });
-//     }
-// }
-
-// var User = mongoose.model("User", userSchema);
-// module.exports = User;
+// hash passwords
 var bcrypt = require("bcryptjs");
 var mongoose = require("mongoose");
 
@@ -57,6 +13,7 @@ var userSchema = mongoose.Schema({
     createdAt:{type:Date, default:Date.now}
 });
 
+// before it saves
 userSchema.pre("save", function(done){
     var user = this;
 

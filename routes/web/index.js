@@ -13,6 +13,7 @@ router.use((req, res, next) => {
 // ^^ that method must be before vv this method
 
 router.use("/", require("./home"));
-// add in error and info
+// when we go to /posts, use this router file
+router.use("/posts", require("./post"));
 
 module.exports = router;

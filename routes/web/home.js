@@ -23,11 +23,6 @@ router.get("/login", (req, res) => {
     res.render("home/login");
 });
 
-// to secure route: use middleware, which authenticates
-// before accessing route.
-router.get("/posts", ensureAuthenticated, (req, res) => {
-    res.render("home/posts");
-});
 
 // login
 router.post("/login", passport.authenticate("login", {
